@@ -1,6 +1,8 @@
-const countBits = (n) => {
-  for (c = 0; n; n >>= 1) c += n & 1;
-  return c;
+const digPow = (n, p) => {
+  let sum = String(n)
+    .split("")
+    .reduce((s, d, i) => s + Math.pow(d, p + i), 0);
+  return sum % n ? -1 : sum / n;
 };
 
-console.log(countBits(1234));
+console.log(digPow(46288, 3));
