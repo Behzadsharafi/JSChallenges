@@ -1,8 +1,7 @@
-const digPow = (n, p) => {
-  let sum = String(n)
-    .split("")
-    .reduce((s, d, i) => s + Math.pow(d, p + i), 0);
-  return sum % n ? -1 : sum / n;
+const findNb = (m) => {
+  let n = 0;
+  while (m > 0) m -= (++n) ** 3;
+  return m ? -1 : n;
 };
 
-console.log(digPow(46288, 3));
+console.log(findNb(1071225));
