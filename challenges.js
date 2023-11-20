@@ -136,3 +136,39 @@ const findNb2 = (m) => {
   while (m > 0) m -= (++n) ** 3;
   return m ? -1 : n;
 };
+
+//	You might know some pretty large perfect squares. But what about the NEXT one?
+//
+//	Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+//
+//	If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is non-negative.
+//
+//	Examples:(Input --> Output)
+//
+//	121 --> 144
+//	625 --> 676
+//	114 --> -1 since 114 is not a perfect square
+
+const findNextSquare = (sq) => {
+  return Math.sqrt(sq) % 1 !== 0 ? -1 : Math.pow(Math.sqrt(sq) + 1, 2);
+};
+
+// Find the missing letter
+// Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+// You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+// The array will always contain letters in only one case.
+
+// Example:
+
+// ['a','b','c','d','f'] -> 'e'
+// ['O','Q','R','S'] -> 'P'
+
+const findMissingLetter = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i + 1].charCodeAt(0) - array[i].charCodeAt(0) > 1) {
+      return String.fromCharCode(array[i].charCodeAt(0) + 1);
+    }
+  }
+  throw new Error("Invalid input");
+};

@@ -1,7 +1,7 @@
-const findNb = (m) => {
-  let n = 0;
-  while (m > 0) m -= (++n) ** 3;
-  return m ? -1 : n;
+const findMissingLetter = (array) => {
+  var i = array[0].charCodeAt();
+  array.map((x) => (x.charCodeAt() === i ? i++ : i));
+  return String.fromCharCode(i);
 };
 
-console.log(findNb(1071225));
+console.log(findMissingLetter(["a", "b", "c", "d", "f"]));
