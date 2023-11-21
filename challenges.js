@@ -172,3 +172,66 @@ const findMissingLetter = (array) => {
   }
   throw new Error("Invalid input");
 };
+
+// The marketing team is spending way too much time typing in hashtags.
+// Let's help them with our own Hashtag Generator!
+
+// Here's the deal:
+
+// It must start with a hashtag (#).
+// All words must have their first letter capitalized.
+// If the final result is longer than 140 chars it must return false.
+// If the input or the result is an empty string it must return false.
+// Examples
+// " Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+// "    Hello     World   "                  =>  "#HelloWorld"
+// ""                                        =>  false
+
+const generateHashtag = (str) => {
+  let hashtag = str.split(" ").reduce((curr, acc) => {
+    return curr + acc.charAt(0).toUpperCase() + acc.substring(1);
+  }, "#");
+
+  return hashtag.length == 1 || hashtag.length > 140 ? false : hashtag;
+};
+
+const generateHashtag2 = (str) => {
+  const result =
+    "#" +
+    str
+      .trim()
+      .split(" ")
+      .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
+      .join("");
+
+  return result.length > 140 || str.trim().length === 0 || result.length === 0
+    ? false
+    : result;
+};
+
+// Given an array of integers, find the one that appears an odd number of times.
+
+// There will always be only one integer that appears an odd number of times.
+
+// Examples
+// [7] should return 7, because it occurs 1 time (which is odd).
+// [0] should return 0, because it occurs 1 time (which is odd).
+// [1,1,2] should return 2, because it occurs 1 time (which is odd).
+// [0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+// [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+
+const findOdd = (A) => {
+  return A.reduce((acc, curr) => acc ^ curr, 0);
+};
+
+//clever
+const findOdd2 = (A) => {
+  let obj = {};
+  A.forEach((el) => {
+    obj[el] ? obj[el]++ : (obj[el] = 1);
+  });
+
+  for (prop in obj) {
+    if (obj[prop] % 2 !== 0) return Number(prop);
+  }
+};
